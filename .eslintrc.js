@@ -15,7 +15,9 @@ const config = {
     '@typescript-eslint'
   ],
   rules: {
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    quotes: 1,
+    indent: 0
   }
 }
 
