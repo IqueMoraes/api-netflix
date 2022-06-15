@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import { MovieController } from '../controllers'
+import { ShowController } from '../controllers'
+import validationShowMiddleware from '../middlewares/validation.middleware'
 
-const movieRouter = Router()
+const showRouter = Router()
 
-movieRouter.get('/movies', MovieController.list)
+showRouter.get('/shows', ShowController.list)
+showRouter.post('/shows', validationShowMiddleware, ShowController.create)
 
-export default movieRouter
+export default showRouter

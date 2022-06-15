@@ -1,12 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-class Movie {
+class User {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  title: string
+  email: string
+
+  @Column()
+  password: string
 }
 
-export default Movie
+export default User
