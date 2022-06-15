@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import { DataSource } from 'typeorm'
-import Movie from '../../src/entities/movie.entity'
+import { EpisodeEntity, ListEntity, ShowEntity, UserEntity } from '../../src/entities'
 dotenv.config()
 
 const AppDataSource = new DataSource({
@@ -10,7 +10,7 @@ const AppDataSource = new DataSource({
   username: 'root',
   password: process.env.MYSQL_PASSWORD,
   database: 'netflix',
-  entities: [Movie],
+  entities: [ShowEntity, EpisodeEntity, UserEntity, ListEntity],
   synchronize: true
 })
 async function databaseInitialize() {
