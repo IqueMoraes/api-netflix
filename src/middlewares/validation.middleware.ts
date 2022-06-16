@@ -1,14 +1,18 @@
-import { NextFunction, Request, Response } from 'express'
+import { NextFunction, Request } from 'express'
 import { Schema } from 'joi'
+import ValidationException from '../exceptions/validation.exception'
+import { CustomResponse } from '../interfaces/custom_response.interface'
 
 function validationShowMiddleware(schema: Schema) {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: CustomResponse, next: NextFunction) => {
     try {
-       await schema.validateAsync(req.body)
+      const validated = await schema.validateAsync(req.body, { abortEarly: false, stripUnknown: true })
+
+      if (validated.error) throw new ValidationException('Dados inválidos', validated.error?.details)
 
       return next()
     } catch (e: any) {
-      res.status(400).json({ error: true, message: e.message })
+      res.errorHandler && res.errorHandler(e)
     }
   }
 }
