@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { ShowCategory } from '../enums'
 
 @Entity('shows')
 class Show {
@@ -11,16 +12,16 @@ class Show {
   @Column({ length: 45 })
   title: string
 
-  @Column({ length: 45 })
+  @Column({ length: 100 })
   director: string
 
-  @Column({ length: 45 })
+  @Column({ length: 200 })
   actors: string
 
-  @Column({ length: 45 })
+  @Column({ type: 'longtext' })
   description: string
 
-  @Column({ length: 45 })
+  @Column({ type: 'enum', default: ShowCategory.MOVIE, enum: ShowCategory })
   Category: string
 }
 
