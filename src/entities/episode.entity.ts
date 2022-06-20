@@ -1,24 +1,25 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import Show from './show.entity';
 
 @Entity('episodes')
 class Episode {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
-  @Column({ length: 45 })
-  title: string
+  @Column()
+  title: string;
 
-  @Column({ length: 45 })
-  description: string
+  @Column({ type: 'text' })
+  description: string;
 
-  @Column({ length: 45 })
-  cover: string
+  @Column()
+  cover: string;
 
-  @Column({ length: 45 })
-  duration: string
+  @Column()
+  duration: number;
 
-  @Column({ length: 45 })
-  actors: string
+  @ManyToOne(() => Show, show => show.episodes)
+  show: Show
 }
 
 export default Episode

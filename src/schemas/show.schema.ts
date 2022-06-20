@@ -3,12 +3,12 @@ import { ShowCategory } from '../enums'
 import { enumToStr } from '../helpers'
 
 const createShowSchema = Joi.object({
-  title: Joi.string().required().length(45),
-  cover: Joi.string().optional().length(200),
-  director: Joi.string().required().length(100),
-  actors: Joi.string().required().length(200),
+  title: Joi.string().required().max(45).uppercase(),
+  cover: Joi.string().optional().max(200).default(''),
+  director: Joi.string().required().max(100).uppercase(),
+  actors: Joi.string().required().max(200).uppercase(),
   description: Joi.string().required(),
-  Category: Joi.string().required().valid(...enumToStr(ShowCategory))
+  category: Joi.string().required().valid(...enumToStr(ShowCategory))
 })
 
 export default createShowSchema
