@@ -1,5 +1,5 @@
 enum ShowCategory {
-  MOVIE = 'MOVIE ',
+  MOVIE = 'MOVIE',
   TV_SHOWS = 'TV_SHOWS'
 }
 

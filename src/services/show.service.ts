@@ -15,7 +15,7 @@ class ShowService {
   }
 
   /**
-   * Retorna todos os shows
+   * Retorna todos os shows do banco de dados
    *
    * @returns Lista de todos os shows
    *

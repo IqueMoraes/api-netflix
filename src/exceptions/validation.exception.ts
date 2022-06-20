@@ -1,11 +1,10 @@
-import BadRequest from './bad_request.excepetion';
+import BadRequest from './bad_request.exception';
 
 class ValidationException extends BadRequest {
-  details?: string[]
+  details?: any[]
 
-  constructor(message: string, details: string[]) {
+  constructor(message: string, details?: any[]) {
     super(message)
-
     this.details = details
   }
 }
